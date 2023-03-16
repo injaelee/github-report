@@ -59,7 +59,7 @@ COPY rxgithub.pull_request_info(
     closed_at,
     url
 )
-FROM '/pg/data/20200101.20220101.pull_requests.tsv'
+FROM '/pg/data/20200101.20230301.pull_requests.tsv'
 DELIMITER E'\t' NULL '';
 ```
 
@@ -75,7 +75,7 @@ COPY rxgithub.pull_request_comment(
     submitted_at,
     url
 )
-FROM '/pg/data/20200101.20220101.pull_request_comments.tsv'
+FROM '/pg/data/20200101.20230301.pull_request_comments.tsv'
 DELIMITER E'\t' NULL '';
 ```
 
@@ -89,7 +89,7 @@ COPY rxgithub.pull_request_assignment(
     name,
     name_type
 )
-FROM '/pg/data/20200101.20220101.pull_request_assignments.tsv'
+FROM '/pg/data/20200101.20230301.pull_request_assignments.tsv'
 DELIMITER E'\t' NULL '';
 ```
 # SQL
