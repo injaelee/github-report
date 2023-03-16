@@ -41,6 +41,8 @@ cut -f2,3,4,5,6 \
 ```
 
 # PostgreSQL
+Filter on the `repo_tag` if you have multiple repositories.
+
 ## Loading CSV
 ```sql
 -- PG specific
