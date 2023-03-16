@@ -41,7 +41,6 @@ cut -f2,3,4,5,6 \
 ```
 
 # PostgreSQL
-Filter on the `repo_tag` if you have multiple repositories.
 
 ## Loading CSV
 ```sql
@@ -93,8 +92,11 @@ COPY rxgithub.pull_request_assignment(
 FROM '/pg/data/20200101.20220101.pull_request_assignments.tsv'
 DELIMITER E'\t' NULL '';
 ```
+# SQL
+Filter on the `repo_tag` if you have multiple repositories.
 
-# LINE CHANGES
+## LINE CHANGES
+
 ```sql
 WITH raw_line_change_cte AS (
     -- obtain the raw line changes 
