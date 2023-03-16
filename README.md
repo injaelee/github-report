@@ -1,4 +1,13 @@
 # Data Extraction
+## Pre-requisite
+Make sure you have your Github access token from "Settings / Developer settings / Personal access tokens / Personal access tokens (classic)".
+
+Put the access token inside an `INI` config file. `github.ini` is an example. Otherwise, here's the template.
+```ini
+[github]
+token = ghp_YOUR_TOKEN_GOES_HERE
+```
+
 ## Execute
 ```bash
 python pr_data_pull.py \
