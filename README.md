@@ -426,7 +426,50 @@ ORDER BY
 ```
 
 ## SUMMARY
-```base
--- apply the 
--- copy the usernames  
+```sql
+WITH raw_event_data_cte AS (
+
+    SELECT 
+      DATE_PART('year', submitted_at) AS event_year,
+      DATE_PART('month', submitted_at) AS event_month,
+      state AS event, 
+      login AS author,
+      COUNT(DISTINCT pr_num) AS unique_pr_count,
+      COUNT(*) AS raw_event_count
+    FROM 
+      rxgithub.pull_request_comment 
+    GROUP BY 
+      1, 2, 3, 4
+
+), rank_by_unique_pr_count AS (
+
+	SELECT
+	  event_year,
+	  event_month,
+	  event,
+	  author,
+	  unique_pr_count,
+	  raw_event_count,
+	  RANK() OVER (
+	    PARTITION BY
+	      event_year, event_month
+	    ORDER BY
+	      unique_pr_count DESC
+	  ) AS rank
+	FROM
+	  raw_event_data_cte
+	WHERE
+	  event = 'APPROVED'
+)
+SELECT
+  author,
+  COUNT(*) AS included_in_count
+FROM
+  rank_by_unique_pr_count
+WHERE
+  rank <= 10 -- change to 5 or whatever
+GROUP BY
+  1
+ORDER BY
+  2 DESC
 ```
