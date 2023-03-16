@@ -41,6 +41,24 @@ cut -f2,3,4,5,6 \
 ```
 
 # PostgreSQL
+## PSQL
+Presuming that Docker Compose is being used under the `./docker` directory.
+```bash
+cd github-report/docker
+docker-compose up
+```
+
+```bash
+-- get 'psql' the postgres client
+--
+psql -h localhost -p 54325 -U postgres
+
+-- enter password on prompt
+-- password for root user 'postgres' is specified in the 'docker/docker-compose.yml'
+-- or use the user specified in the creation script
+--
+rx0bs-passw0rd
+```
 
 ## Loading CSV
 ```sql
